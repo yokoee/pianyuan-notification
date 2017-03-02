@@ -20,12 +20,12 @@ def get_resources(imdb,name):
     tables = soup.find('span', text='全部资源').find_all_next('table')
     movie_resources = list()
     for table in tables:
-        tmp = dict()
         resource_pages = list()
         for i in table.find_all('td', class_='nobr'):
             if i.a:
                 resource_pages.append(i.a['href'])
         for i in resource_pages:
+            tmp = dict()
             soup_r = BeautifulSoup(requests.get('http://pianyuan.net' + i).text, 'html.parser')
             #资源下载链接
             tmp['link'] = soup_r.find('div', class_='tdown').a.find_next('a')['href']

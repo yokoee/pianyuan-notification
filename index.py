@@ -39,8 +39,13 @@ def extra_new_resources():
     return new_resources
 
 while True:
+    structTime = time.localtime(time.time())
+    currentTime = str(structTime.tm_year) + '/' + str(structTime.tm_mon) + '/' + str(structTime.tm_mday)  + '\0' + str(structTime.tm_hour) + ':' + str(structTime.tm_min)
     new_s = extra_new_resources()
     if len(new_s) > 0:
+        with open('/tmp/log.log', 'r+') as f:
+            f.seek(0)
+            f.write('[' + currentTime + ']' + '找到 ' + str(len(new_s)) + ' 个新资源！')
         print('找到 ' + str(len(new_s)) + ' 个新资源！')
         html_ = ''
         for i in new_s:
@@ -51,6 +56,9 @@ while True:
         subject_ = '你想看的电影有资源更新了😋'
         email_.send_email(html_, subject_)
     else:
+        with open('/tmp/log.log', 'r+') as f:
+            f.seek(0)
+            f.write('[' + currentTime + ']' + '没有资源更新')
         print('没有资源更新')
     print('等待中 ... ')
     time.sleep(3600)
