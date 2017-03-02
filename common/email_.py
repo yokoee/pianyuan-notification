@@ -32,6 +32,3 @@ def send_email(html, subject):
     except:
         print('邮件发送失败...')
         return False
-
-subject_ = '你想看的电影有资源更新了😋'
-send_email('html_', subject_)
