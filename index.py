@@ -59,6 +59,7 @@ while True:
             html_ += '<p>清晰度 : ' + i['definition'] + '大小 :'  + i['size'] + '</p>' + '\n'
             html_ += '<p>链接 : <a href = "' + i['link'] + '">' + i['link'] + '</a></p>' + '</br>' + '\n' 
         subject_ = '你想看的电影有资源更新了😋'
+        email_.send_email(html_,subject_)
     else:
         with open(os.path.join(os.getcwd(), 'tmp', 'log.log'), 'r+') as f:
             f.seek(0)
