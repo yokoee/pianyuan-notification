@@ -20,6 +20,7 @@ def send_email(html, subject):
     msg['Subject'] = Header(subject, 'utf-8').encode()
     try:
         server = smtplib.SMTP(smtp_server, smtp_port)
+        server.set_debuglevel(1)
         server.ehlo()
         server.starttls()
         server.ehlo()
@@ -31,3 +32,6 @@ def send_email(html, subject):
     except:
         print('邮件发送失败...')
         return False
+
+subject_ = '你想看的电影有资源更新了😋'
+send_email('html_', subject_)
