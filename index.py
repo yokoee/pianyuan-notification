@@ -15,6 +15,11 @@ def extra_new_resources():
         f.close()
     f = open(os.path.join(os.getcwd(), 'tmp', 'movie.json'), 'r+')
 
+#检查日志文件
+    if not os.path.exists(os.path.join(os.getcwd(), 'tmp', 'log.log')):
+        f = open(os.path.join(os.getcwd(), 'tmp', 'log.log'), 'w')
+        f.close()
+
     all_resources = list()
     new_resources = list()
     for movie in movie_list:

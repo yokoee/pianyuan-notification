@@ -40,6 +40,6 @@ def get_resources(imdb,name):
             tmp['name'] = name
             tmp['imdb'] = imdb
             movie_resources.append(tmp)
-            time.sleep(0.5)
+            time.sleep(1)
     print('找到 ' + str(len(movie_resources)) + ' 个资源！')
     return movie_resources
